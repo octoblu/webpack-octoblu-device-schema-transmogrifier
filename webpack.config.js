@@ -7,6 +7,7 @@ module.exports = {
     './index.js'
   ],
   output: {
+    libraryTarget: 'commonjs2',
     library: 'OctobluDeviceSchemaTransmogrifier',
     path: path.join(__dirname, 'dist'),
     filename: 'transmogrifier.js'

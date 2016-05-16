@@ -1,10 +1,10 @@
 {
   "name": "webpack-octoblu-device-schema-transmogrifier",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Webpackable octoblu-device-schema-transmogrifier",
   "main": "dist/transmogrifier.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "exit 0",
     "build": "webpack --config webpack.config.js",
     "bundle": "webpack --config webpack.config.global.js -p"
   },
