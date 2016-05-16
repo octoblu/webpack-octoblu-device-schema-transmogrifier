@@ -1,0 +1,30 @@
+language: node_js
+node_js:
+- '5'
+before_deploy:
+- npm install
+- npm run-script build
+- npm run-script bundle
+- mkdir -p deploy/webpack-octoblu-device-schema-transmogrifier/$TRAVIS_TAG
+- cp deploy/webpack-octoblu-device-schema-transmogrifier/latest/webpack-octoblu-device-schema-transmogrifier.bundle.js deploy/webpack-octoblu-device-schema-transmogrifier/$TRAVIS_TAG/webpack-octoblu-device-schema-transmogrifier.bundle.js
+deploy:
+- provider: s3
+  access_key_id: AKIAJH2D5IPIRHYJT5IA
+  secret_access_key:
+    secure: "G9txCEPRZSQEZhGTYoFhqrACXFCud19Gi5cajgRR9NGaas98kj2Tr8o528deJvHyHypxDrb03AElpdjV3b2Xai3v5S8IgjiRi2Ij5qxLrlNqICJPamG6x5HmQ6PMsQtnrJcz/A2zlne0vG5VpqUqVZB23qEbzOgbFrKUvqghA1OClhvQWTTOyQHZsn7cH5zPcS0N2h3ony2lG/aBM/dDijTYMbOMcq+NseuAyPniHJTsnitfRLe8Z14T1MZ2Z1n05lGLkFXlYrQr+YUCj2DlT29LTdq6cM4Rvj0TELCx8CUzNz4sL0RODYRXm1l+MlgBowLJagmth+4nCZOJNo+DIX/h+FtIQIXOK47dYrsjl+X9QraRQnBygm3WOuQX5sA+Osmd6hhcRMx+HZ+I03qkhGdXhKgvSH6JWcvIHPi1fiobBL24uW5d1pyVP3/Lowm5eaqlurJJqIItWDe4RzQDqm0E1XB5OASDCx3BgkvuW3dt6WBM0PoJDfNL0ZP+GWE9sR/SumWrK1d9GnIwE9NPvZ0ofvja3YYliI21f21OUk1LDCDmbGm3Jjs+dzTNcvbWm5EgXFZYFOimE6U6AWaXrFBVU9aT2l5OReB47LDEeiKOaBNwdB72umKD6sXK8ebEY5oh33va4soMUBHM+ytb6Xu95xf3igMtf36KGHESImQ="
+  bucket: octoblu-cdn
+  region: us-west-2
+  skip_cleanup: true
+  detect_encoding: true
+  local-dir: deploy
+  upload-dir: js
+  on:
+    tags: true
+    all_branches: true
+- provider: npm
+  email: serveradmin@octoblu.com
+  api_key:
+    secure: KuqKI1njeV2un2IG/TYYyyHjvwOzQMCsUKQwirFmyWCVgRSfEvd0x867Lg9Qx27M4jMk4mTZrGkGmauoSrY4NZyW9rlWDV/Hoy+/jl2SgTJGJqEhVMNukEqXOa+fg1VK7W4FPuRxC+wYwtY7uz8wKNW9cUcpooW5MYQ+ZmlWU4i/5qBXLefn2DUA0Kio0R1zED1+HTygxbwExr+dKWSJXtIZUcjamGViK3WuiAZn2wgwGqbm2qs/KFN++xK6pY46DTsBK8tvMTBedDeejtavwdNyfoD0n/TjJ6YljMbKBrJhw/CagLNjA1gNu7vB7C6aesOKuBjZK4/79q8Dg15dBwA9fg5S3gvU6WBti/B5pqEUAZpRJnwnKUcLDpGNLNqwtbGDZdBxQhY/Ixy4DP7lbAThGeNNu3R2BDXqvmw1I9F7TOxa+O3O91ToHupoS5d9++gJ4Keq3PbV3CKR7m1pS2BNCi/f03zYF3N/66AKcrLPQuoBk/m05etyzjloVYcL5dvYcfFb0ILSFl+MtJpG7nUKpSHy4Nm3Svr2eftVvxYeGKoPzDhdscoDYeKHJ/j3lB4ueFwDuckGaS8H7QqXDNOL7IgfOPR1zDqGFBoFFqw5/i7KfunOgZasOHLowFamgoR0sTnDNlc/+yneYSDfH2OR+141o1ig6FCdmIqtyWA=
+  on:
+    tags: true
+    branches: true
