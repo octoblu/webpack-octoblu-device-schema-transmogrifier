@@ -8,7 +8,7 @@ module.exports = {
   ],
   output: {
     library: 'OctobluDeviceSchemaTransmogrifier',
-    path: path.join(__dirname, 'deploy', 'webpack-octoblu-device-schema-transmogrifier'),
+    path: path.join(__dirname, 'deploy', 'webpack-octoblu-device-schema-transmogrifier', 'latest'),
     filename: 'webpack-octoblu-device-schema-transmogrifier.bundle.js'
   },
   module: {
