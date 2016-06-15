@@ -1,6 +1,6 @@
 {
   "name": "webpack-octoblu-device-schema-transmogrifier",
-  "version": "2.2.1",
+  "version": "3.0.0",
   "description": "Webpackable octoblu-device-schema-transmogrifier",
   "main": "dist/transmogrifier.js",
   "scripts": {
@@ -20,10 +20,10 @@
   "homepage": "https://github.com/octoblu/webpack-octoblu-device-schema-transmogrifier#readme",
   "devDependencies": {
     "coffee-loader": "^0.7.2",
-    "webpack": "^1.13.0"
+    "webpack": "^1.13.1"
   },
   "dependencies": {
-    "lodash": "^4.12.0",
-    "octoblu-device-schema-transmogrifier": "^6.0.2"
+    "lodash": "^4.13.1",
+    "octoblu-device-schema-transmogrifier": "^6.1.0"
   }
 }
